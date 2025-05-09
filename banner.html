@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bannière animée Evoma</title>
+    <style>
+        .plus-jakarta-sans-font {
+            font-family: "Plus Jakarta Sans", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        /* Conteneur de la bannière */
+        .banner {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            height: 300px;
+            background: #0a0a0a url('background.png') center/cover no-repeat;
+            /* Fond sombre */
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        /* Canvas Particules */
+        #particles-banner {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        /* Texte animé */
+        .banner-text {
+            position: absolute;
+            top: 30%;
+            left: 60%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            font-size: 5rem;
+            font-weight: bold;
+            color: #e79e2b;
+            overflow: hidden;
+            height: 2.4em;
+            width: 800px;
+            text-align: center;
+        }
+
+        .banner-text .text-item {
+            display: block;
+            top: 50%;
+            transform: translateY(-50%);
+            position: absolute;
+            width: 100%;
+            opacity: 0;
+            /* Animation unique, delay piloté par la variable CSS --delay */
+            animation: fadeSlide 27s ease-in-out infinite;
+            animation-delay: var(--delay, 0s);
+        }
+
+        /* fadeSlide: fade in with slide-up, hold, fade out with slide-up */
+        @keyframes fadeSlide {
+        /* 0 % = tout juste démarré, texte encore invisible */
+        0% {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        /* ~1,85 % (0,5 s) = fin du fondu d’entrée */
+        1.85% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* ~9,26 % (2,5 s) = début du fondu de sortie */
+        9.26% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* 11,11 % (3 s) = fin du fondu + slide up */
+        11.11% {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        /* jusqu’à 100 % = texte resté caché pendant le reste du cycle */
+        100% {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        }
+
+        .footer-text {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            font-size: 2rem;
+            color: #f9e7bb;
+            text-align: center;
+            background-color: #212529;
+            padding: 10px;
+            border-radius: 10px;
+            border-style: solid;
+            border-color: #100f0d;
+            overflow: hidden;
+            width: 400px;
+            height: 0.7em;
+        }
+
+        .footer-text-item {
+            position: absolute;
+            width: 100%;
+            left: 0%;
+            bottom: 5%;
+            opacity: 0;
+            animation: fadeFooter 8s ease-in-out infinite;
+            animation-delay: var(--delay, 0s);
+        }
+
+        @keyframes fadeFooter {
+            /* visible 0–45% */
+            0%, 45% { opacity: 1; }
+            /* fade out 45–55% */
+            55% { opacity: 0; }
+            /* remain hidden until next cycle */
+            100% { opacity: 0; }
+        }
+
+        /* Logo sur la gauche avec effet flottant */
+        .banner-logo {
+            position: absolute;
+            top: 50%;
+            left: 70px;
+            /* Aligné à gauche */
+            transform: translateY(-50%);
+            z-index: 2;
+            width: 200px;
+            opacity: 0;
+            /* Animation d'apparition puis flottement infini */
+            animation: fadeInScale 2s ease-out forwards, floating 4s ease-in-out 2s infinite;
+        }
+
+        /* Animation d'apparition */
+        @keyframes fadeInScale {
+            0%   { opacity: 0; transform: translateY(-50%) scale(0.5); }
+            100% { opacity: 1; transform: translateY(-50%) scale(1); }
+        }
+
+        /* Animation flottante */
+        @keyframes floating {
+            0%   { transform: translateY(-50%) rotate(+5deg); }
+            50%  { transform: translateY(-55%) rotate(0deg); }
+            100% { transform: translateY(-50%) rotate(+5deg); }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="banner">
+        <div id="particles-banner"></div>
+
+        <!-- Texte qui alterne -->
+        <div class="banner-text plus-jakarta-sans-font">
+            <span class="text-item" style="--delay:0s">Nouveau Serveur</span>
+            <span class="text-item" style="--delay:3s">Semi-Whitelist</span>
+            <span class="text-item" style="--delay:6s">Expérience fluide</span>
+            <span class="text-item" style="--delay:9s">Mappings exclusifs</span>
+            <span class="text-item" style="--delay:12s">Roleplay Immersif</span>
+            <span class="text-item" style="--delay:15s">Staff à l'écoute</span>
+            <span class="text-item" style="--delay:18s">Lore de GTA V</span>
+            <span class="text-item" style="--delay:21s">Véhicules exclusifs</span>
+            <span class="text-item" style="--delay:24s">Économie équilibrée</span>
+
+        </div>
+
+        <!-- Texte footer avec cross-fade -->
+        <div class="footer-text plus-jakarta-sans-font">
+            <span class="footer-text-item" style="--delay:0s">Visiter notre site : evomarp.fr</span>
+            <span class="footer-text-item" style="--delay:4s">Discord : discord.evomarp.fr</span>
+        </div>
+        <!-- Logo / Donut animé -->
+        <img src="logo.png" alt="Logo Donut" class="banner-logo">
+    </div>
+
+    <!-- Particles.js -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS('particles-banner', {
+            "particles": {
+                "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": ["#f9e7bb", "#e79e2b", "#c47d00"] },
+                "shape": { "type": ["circle", "triangle"], "stroke": { "width": 0 }, "polygon": { "nb_sides": 5 } },
+                "opacity": { "value": 0.6, "random": true, "anim": { "enable": true, "speed": 1, "opacity_min": 0.1, "sync": false } },
+                "size": { "value": 4, "random": true, "anim": { "enable": true, "speed": 2, "size_min": 0.3, "sync": false } },
+                "line_linked": { "enable": false },
+                "move": { "enable": true, "speed": 1.5, "random": true, "straight": false, "out_mode": "out", "bounce": false }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": { "onhover": { "enable": true, "mode": "bubble" }, "onclick": { "enable": true, "mode": "push" }, "resize": true },
+                "modes": { "bubble": { "distance": 100, "size": 6, "duration": 2 }, "push": { "particles_nb": 4 } }
+            },
+            "retina_detect": true
+        });
+    </script>
+</body>
+
+</html>
