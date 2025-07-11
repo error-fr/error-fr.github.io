@@ -39,7 +39,7 @@
         .banner-text {
             position: absolute;
             top: 30%;
-            left: 60%;
+            left: 50%;
             transform: translate(-50%, -50%);
             z-index: 2;
             font-size: 5rem;
@@ -92,6 +92,36 @@
         }
         }
 
+        .top-text {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            font-size: 2rem;
+            color: #f9e7bb;
+            text-align: center;
+            background-color: #212529;
+            padding: 10px;
+            border-radius: 10px;
+            border-style: solid;
+            border-color: #100f0d;
+            overflow: hidden;
+            width: 300px;
+            height: 0.7em;
+        }
+
+        .top-text-item {
+            position: absolute;
+            width: 100%;
+            left: 0%;
+            top: 5%;
+            opacity: 100;
+            /* opacity: 0; */
+            /* animation: fadeFooter 8s ease-in-out infinite; */
+            /* animation-delay: var(--delay, 0s); */
+        }
+
         .footer-text {
             position: absolute;
             bottom: 10px;
@@ -134,14 +164,14 @@
         .banner-logo {
             position: absolute;
             top: 50%;
-            left: 70px;
+            left: 20px;
             /* Aligné à gauche */
             transform: translateY(-50%);
             z-index: 2;
             width: 200px;
             opacity: 0;
             /* Animation d'apparition puis flottement infini */
-            animation: fadeInScale 2s ease-out forwards, floating 4s ease-in-out 2s infinite;
+            animation: fadeInScale 0s ease-out forwards, floating 4s ease-in-out 0s infinite;
         }
 
         /* Animation d'apparition */
@@ -162,6 +192,10 @@
 <body>
     <div class="banner">
         <div id="particles-banner"></div>
+
+        <!-- <div class="top-text plus-jakarta-sans-font">
+            <span class="top-text-item">Ouverture le 18 juillet</span>
+        </div> -->
 
         <!-- Texte qui alterne -->
         <div class="banner-text plus-jakarta-sans-font">
